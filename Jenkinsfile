@@ -1,5 +1,6 @@
- @Library("test-shared-library-example") _
-    standardPipeline {
-        projectName = "Project1"
-        serverDomain = "Project1 Server Domain"
-    }
+@Library("rajat-shared-pipeline")_
+standardPipelineP{
+projectName = "Project1"
+ serverDomain = "Project1 server domain"
+
+}
