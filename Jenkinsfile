@@ -1,14 +1,10 @@
 @Library('rajat-shared-pipeline') _
 pipeline{
- agent none
+ agent any
  stages{
-    stage ('Cleanup') {
+    stage ('Checkout') {
      steps{
-      
-     parallel(
-      'a': {echo "this is windows a"},
-      'b': { node 'master' {checkout scm}}
-     )
+    checkout scm
      }
     }
   stage ('BuildMaven'){
