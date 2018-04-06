@@ -9,7 +9,7 @@ pipeline{
     }
   stage ('BuildMaven'){
    steps{
-    mvnBuild('clean build -f ${env.WORKSPACE}/my-app/pom.xml')
+    mvnBuild('clean build --file my-app/pom.xml')
    }
   }
  }
