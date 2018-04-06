@@ -7,7 +7,7 @@ pipeline{
       
      parallel(
       'a': {echo "this is windows a"},
-      'b': {checkout scm}
+      'b': { node 'master' {checkout scm}}
      )
      }
     }
