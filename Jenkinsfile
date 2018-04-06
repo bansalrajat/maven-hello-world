@@ -4,6 +4,7 @@ pipeline{
  stages{
     stage ('Cleanup') {
      steps{
+      checkout scm
      parallel(
       'a': {echo "this is windows a"},
       'b': {echo "this is windows b"}
@@ -12,7 +13,7 @@ pipeline{
     }
   stage ('BuildMaven'){
    steps{
-    script{    mvnBuild clean install}
+    script{    mvnBuild clean build}
    
    }
   }
