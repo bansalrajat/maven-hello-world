@@ -12,7 +12,7 @@ pipeline{
     }
   stage ('BuildMaven'){
    steps{
-    script{   mvnBuild clean install}
+    mvnBuild clean install
    
    }
   }
