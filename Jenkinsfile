@@ -1,3 +1,4 @@
+@Library('rajat-shared-pipeline')_
 pipeline{
  agent none
  stages{
