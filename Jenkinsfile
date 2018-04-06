@@ -3,7 +3,7 @@ pipeline{
  stages{
   stage ('Cleanup') {
    steps{
-   ls -ltr
+   dir
    }
   }
  
