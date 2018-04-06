@@ -1,6 +1,14 @@
-@Library("rajat-shared-pipeline")_
-standardPipeline{
-projectName = "Project1"
- serverDomain = "Project1 server domain"
+pipeline{
+ agent none
+ stages{
+  stage ('Cleanup') {
+   steps{
+   ls -ltr
+   }
+  }
+ 
+ 
+ 
+ }
 
 }
