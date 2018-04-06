@@ -8,7 +8,13 @@ pipeline{
       'b': {echo "this is windows b"}
      )
      }
+    }
+  stage ('BuildMaven'){
+   steps{
+   mvnBuild clean install
+   
    }
+  }
  
  
  
