@@ -4,8 +4,8 @@ pipeline{
     stage ('Cleanup') {
      steps{
      parallel(
-      a: {echo "this is windows a"}
-      b: {echo "this is windows b"}
+      'a': {echo "this is windows a"}
+      'b': {echo "this is windows b"}
      )
      }
    }
