@@ -4,10 +4,10 @@ pipeline{
  stages{
     stage ('Cleanup') {
      steps{
-      checkout scm
+      
      parallel(
       'a': {echo "this is windows a"},
-      'b': {echo "this is windows b"}
+      'b': {checkout scm}
      )
      }
     }
