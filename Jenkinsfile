@@ -3,7 +3,7 @@ pipeline{
  stages{
   stage ('Cleanup') {
    steps{
-   dir
+   echo "helloworld"
    }
   }
  
