@@ -6,7 +6,8 @@ pipeline {
     }
     stages{
         stage('Build'){
-            steps{mvn clean package --file $MODULE/pom.xml  }}
+            steps{mvn clean package --file ${MODULE}/pom.xml  }
+        }
         stage('Pehla Padaav'){
             steps{
                 echo "Aap pehle padaav me hai "
