@@ -1,16 +1,21 @@
-@Library('rajat-shared-pipeline') _
-pipeline{
- agent any
- stages{
-    stage ('Checkout') {
-     steps{
-    checkout scm
-     }
+pipeline {
+    agent {label 'kubernetes-node'}
+    environment{
+        FOO = "BAR"
     }
-  stage ('BuildMaven'){
-   steps{
-    mvnBuild('clean package --file my-app/pom.xml')
-   }
-  }
- }
+    stages{
+        stage('Pehla Padaav'){
+            steps{
+                echo "Aap pehle padaav me hai "
+                script {MYVAR = "PEHLE VAR"}
+            }
+        }
+        stage ('DOOSRA Padaav'){
+            steps {
+                echo "BHai saab sahi ahi "
+                echo " doosre padaav mein : ${MYVAR} jee baat!!"
+                echo " doosre padaav mein : ${FOO} jee baat!!"
+            }
+        }
+    }
 }
