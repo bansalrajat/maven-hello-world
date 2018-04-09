@@ -5,9 +5,19 @@ pipeline {
         MODULE = "my-app"
     }
     stages{
-        stage('Build'){
-            steps{ script {mvn clean package --file ${MODULE}/pom.xml } }
+        stage('Checkout'){ 
+            steps{checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/bansalrajat/maven-hello-world.git']]])
+            }
         }
+        stage('Build'){
+            steps{ sh "/var/jenkins/tools/apache-maven-3.5.2/bin/mvn clean package --file ${MODULE}/pom.xml"  }
+        }
+        stage ('archiveArtifacts'){steps{
+            archiveArtifacts "${MODULE}/target/${MODULE}-*.jar"
+
+            
+            
+        }}
         stage('Pehla Padaav'){
             steps{
                 echo "Aap pehle padaav me hai "
