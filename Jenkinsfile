@@ -8,7 +8,7 @@ pipeline{
             
         }
         stage ('another docker') {
-            agent {docker {image 'ubuntu'}} 
+            agent {dockerfile true} 
             steps{
                 echo "in ubuntu"
                 sh 'hostname -i'
