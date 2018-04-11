@@ -17,7 +17,7 @@ pipeline{
                 sh 'hostname -i'
                 }
         }            
-        stage ('Builder1 Info'){
+        stage ('Builder2 Info'){
             agent {dockerfile true}
             steps{
                 echo "in ubuntu"
