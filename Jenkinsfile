@@ -1,7 +1,7 @@
 pipeline{
     agent { label 'master' }
     tools {
-        'm3'
+       maven 'm3'
     }   
     stages{
         stage ('Clean Workspace'){
