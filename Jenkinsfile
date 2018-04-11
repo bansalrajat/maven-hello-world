@@ -3,33 +3,36 @@ pipeline {
     environment{
         FOO = "BAR"
         MODULE = "my-app"
+        def mvnHome = "tool name: 'm3'"
     }
     stages{
+        stage('CleanWs'){steps {cleanWs()}}
         stage('Checkout'){ 
             steps{checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/bansalrajat/maven-hello-world.git']]])
             }
         }
         stage('Build'){
-            steps{ sh "/var/jenkins/tools/apache-maven-3.5.2/bin/mvn clean package --file ${MODULE}/pom.xml"  }
+            //node ("kubernetes-node"){
+            steps{
+                node ("master"){
+                echo "build"
+                echo "$mvnHome"
+                bat "mvn -v"
+                //bat "D:\\softwares\\apache-maven-3.5.2-bin\\apache-maven-3.5.2\\bin\\mvn -v"
+                //sh "/var/jenkins/tools/apache-maven-3.5.2/bin/mvn clean package --file ${MODULE}/pom.xml"  
+            }
+            }
         }
         stage ('archiveArtifacts'){steps{
-            archiveArtifacts "${MODULE}/target/${MODULE}-*.jar"
-
+        //    archiveArtifacts "${MODULE}/target/${MODULE}-*.jar"
+        
+        parallel (a: {node ("master") { sh 'hostname' }} , b: {echo 'in b' ; sh 'ifconfig' })}}
+        
+        stage ('Upload to Nexus'){steps {
+         
+         echo "This is nexus upload"   
             
-            
-        }}
-        stage('Pehla Padaav'){
-            steps{
-                echo "Aap pehle padaav me hai "
-                script {MYVAR = "PEHLE VAR"}
-            }
-        }
-        stage ('DOOSRA Padaav'){
-            steps {
-                echo "BHai saab sahi ahi "
-                echo " doosre padaav mein : ${MYVAR} jee baat!!"
-                echo " doosre padaav mein : ${FOO} jee baat!!"
-            }
+        } 
         }
     }
 }
