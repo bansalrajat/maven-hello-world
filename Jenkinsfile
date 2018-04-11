@@ -15,9 +15,10 @@ pipeline {
             //node ("kubernetes-node"){
             steps{
                 node ("master"){
-                echo "build"
-                echo "$mvnHome"
-                bat "mvn -v"
+                    echo "build"
+                    checkout scm
+                    echo "$mvnHome"
+                    bat "mvn -v"
                 //bat "D:\\softwares\\apache-maven-3.5.2-bin\\apache-maven-3.5.2\\bin\\mvn -v"
                 //sh "/var/jenkins/tools/apache-maven-3.5.2/bin/mvn clean package --file ${MODULE}/pom.xml"  
             }
