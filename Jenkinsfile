@@ -1,7 +1,7 @@
 pipeline{
     agent { label 'master' }
     tools {
-        mvnHome = tool name: 'm3'
+        'm3'
     }   
     stages{
         stage ('Clean Workspace'){
