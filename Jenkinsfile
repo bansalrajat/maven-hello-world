@@ -28,10 +28,14 @@ pipeline{
                 sh 'hostname -i'
                 sh 'mvn clean package -f my-app/pom.xml'
                 archiveArtifacts 'my-app/target/*.jar'
-
+                }
             }
         }
+    post{
+        always{ echo "in always "}
+        failure{echo "in failure "}
+        success{echo "in success "}
+        unstable{echo "in unstable "}
+        changed{echo "in changed "}
+        }
     }
-    
-    
-}
