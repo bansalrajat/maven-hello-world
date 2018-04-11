@@ -18,6 +18,7 @@ pipeline{
             steps{
                 echo "in jenkins"
                 sh 'hostname -i'
+                sh 'mvn --version'
                 }
         }            
         stage ('Builder2 Info'){
