@@ -26,7 +26,9 @@ pipeline{
             steps{
                 echo "in ubuntu"
                 sh 'hostname -i'
-                sh 'mvn clean compile -f my-app/pom.xml'
+                sh 'mvn clean package -f my-app/pom.xml'
+                archiveArtifacts 'my-app/target/*.jar'
+
             }
         }
     }
