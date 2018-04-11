@@ -1,5 +1,8 @@
 pipeline{
     agent { label 'master' }
+    tools {
+        mvnHome = tool name: 'm3'
+    }   
     stages{
         stage ('Clean Workspace'){
             steps{
@@ -22,6 +25,7 @@ pipeline{
             steps{
                 echo "in ubuntu"
                 sh 'hostname -i'
+                sh 'mvn clean compile -f my-app/pom.xml'
             }
         }
     }
