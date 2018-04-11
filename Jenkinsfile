@@ -22,7 +22,7 @@ pipeline{
                 }
         }            
         stage ('Builder2 Info'){
-            agent {dockerfile true}
+            agent {dockerfile {args '-v /var/jenkins/tools:/var/jenkins/tools'}}
             steps{
                 echo "in ubuntu"
                 sh 'hostname -i'
