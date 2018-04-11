@@ -1,5 +1,5 @@
 pipeline{
-    agent { label 'master' }
+    agent { label 'docker-master' }
     tools {
        maven 'm3'
     }   
