@@ -8,7 +8,7 @@ pipeline{
         }
         stage ('Checkout code'){
             steps{
-                checout scm 
+                checkout scm 
             }
         }
         stage ('Builder1 Info'){
