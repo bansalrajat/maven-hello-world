@@ -13,6 +13,13 @@
       <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
   </properties>
 
+  <distributionManagement>
+   <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://192.168.33.13:8081/nexus/content/repositories/snapshots</url>
+   </snapshotRepository>
+</distributionManagement>
+	
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
