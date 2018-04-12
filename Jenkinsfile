@@ -26,12 +26,17 @@ pipeline{
             steps{
                 echo "in ubuntu"
                 sh 'hostname -i'
-                sh 'mvn clean deploy -f my-app/pom.xml'
+                sh 'mvn clean deploy -f my-app/pom.xml -DuniqueVersion=false'
                 //archiveArtifacts 'my-app/target/*.jar'
                 stash includes: '**/*/*.jar', name: 'artifacts'
                 }
             }
-        stage('Delete dirs '){steps {deleteDir()}}
+        stage('Delete dirs '){steps {
+            sh 'pwd'
+            sh 'hostname'
+            sh 'ls -ltr'
+            
+            deleteDir()}}
         stage('Unstashing Artifacts'){
             steps{
                 sh 'pwd'
