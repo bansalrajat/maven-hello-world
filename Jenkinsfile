@@ -48,7 +48,7 @@ pipeline{
             }        
         stage('Build Docker Image'){
             steps{
-                sh '/usr/bin/docker build -f Dockerfile_target  --build-arg warfile=`my-app/target/my-app/my-app*.jar` -t ubuntujenkins:my-app'
+                sh '/usr/bin/docker build -f Dockerfile_target  --build-arg warfile=`my-app/target/my-app*.jar` -t ubuntujenkins:my-app'
                 //sh '/usr/bin/docker push'
             }
         }
