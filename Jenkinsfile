@@ -31,12 +31,6 @@ pipeline{
                 stash includes: '**/*/*.jar', name: 'artifacts'
                 }
             }
-        stage('Delete dirs '){steps {
-            sh 'pwd'
-            sh 'hostname'
-            sh 'ls -ltr'
-            
-            deleteDir()}}
         stage('Unstashing Artifacts'){
             steps{
                 sh 'pwd'
