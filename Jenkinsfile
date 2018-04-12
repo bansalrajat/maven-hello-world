@@ -56,9 +56,7 @@ pipeline{
     post{
         always{ echo "in always "}
         failure{echo "in failure "}
-        success{stages{
-            stage('Stage in Success'){echo "Exploring new stages in compose"
-            }}}
+        success{echo "Exploring new stages in compose"}
         unstable{echo "in unstable "}
         changed{echo "in changed "}
         }
