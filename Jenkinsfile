@@ -34,6 +34,8 @@ pipeline{
         stage('Delete dirs '){steps {deleteDir()}}
         stage('Unstashing Artifacts'){
             steps{
+                sh 'pwd'
+                sh 'hostname'
                 sh 'ls -ltr'
                 unstash 'artifacts'
                 sh 'ls -ltr'
