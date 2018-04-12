@@ -28,7 +28,7 @@ pipeline{
                 sh 'hostname -i'
                 sh 'mvn clean deploy -f my-app/pom.xml'
                 //archiveArtifacts 'my-app/target/*.jar'
-                stash includes: 'my-app/target/*.jar', name: 'artifacts'
+                stash includes: '**/*/*.jar', name: 'artifacts'
                 }
             }
         stage('Delete dirs '){steps {deleteDir()}}
