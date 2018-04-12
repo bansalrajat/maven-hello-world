@@ -31,9 +31,15 @@ pipeline{
                 stash includes: 'my-app/target/*.jar', name: 'artifacts'
                 }
             }
-        
+        stage('Delete dirs '){steps {deleteDir()}}
+        stage('Unstashing Artifacts'){
+            steps{
+                sh 'ls -ltr'
+                unstash 'artifacts'
+                sh 'ls -ltr'
+                }
+            }        
         }
-    
     post{
         always{ echo "in always "}
         failure{echo "in failure "}
