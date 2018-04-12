@@ -1,0 +1,6 @@
+FROM ubuntu
+MAINTAINER rajatbansal
+
+ARG warfile
+
+ADD $warfile /var
