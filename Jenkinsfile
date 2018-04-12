@@ -27,10 +27,13 @@ pipeline{
                 echo "in ubuntu"
                 sh 'hostname -i'
                 sh 'mvn clean deploy -f my-app/pom.xml'
-                archiveArtifacts 'my-app/target/*.jar'
+                //archiveArtifacts 'my-app/target/*.jar'
+                stash includes: 'my-app/target/*.jar', name: 'artifacts'
                 }
             }
+        
         }
+    
     post{
         always{ echo "in always "}
         failure{echo "in failure "}
