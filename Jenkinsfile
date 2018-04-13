@@ -31,7 +31,14 @@ pipeline{
                 //archiveArtifacts 'my-app/target/*.jar'
                 stash includes: '**/*/*.jar', name: 'artifacts'
                 }
+            post{
+                success{
+                    junit 'my-app/target/surefire-reports/*.xml'
+                }
             }
+        }
+        
+        
         stage('Unstashing Artifacts'){
             steps{
                 sh 'pwd'
