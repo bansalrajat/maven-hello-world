@@ -1,3 +1,4 @@
+@Library('rajat-shared-lib') _
 pipeline{
     agent { label 'docker-master' }
     tools {
@@ -42,7 +43,7 @@ pipeline{
             }        
         stage('Build Docker Image'){
             steps{
-                sh '/usr/bin/docker build -f Dockerfile_target  --build-arg warfile=`ls my-app/target/my-app*.jar` -t my-app:SNAPSHOT . '
+                dockerBuild("-f Dockerfile_target  --build-arg warfile=`ls my-app/target/my-app*.jar` -t my-app:SNAPSHOT .")
                 //sh '/usr/bin/docker push'
             }
         }
