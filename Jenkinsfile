@@ -50,6 +50,7 @@ pipeline{
             }        
         stage('Build Docker Image'){
             steps{
+                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
                 dockerBuild("-f Dockerfile_target  --build-arg warfile=`ls my-app/target/my-app*.jar` -t my-app:SNAPSHOT .")
                 //sh '/usr/bin/docker push'
             }
